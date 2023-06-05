@@ -1,6 +1,11 @@
 from flask import Flask,request,render_template,redirect
 import requests
 import os
+from dotenv import load_dotenv
+
+# Load the stored environment variables
+load_dotenv()
+
 class Review(object):
     def __init__(self,name,review):
         self.name = name
