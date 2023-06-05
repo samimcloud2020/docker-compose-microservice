@@ -3,10 +3,10 @@ import psycopg2
 import os
 import time
 
-DB_USER = os.environ["john"]
-DB_PASSWORD = os.environ["example"]
-DB = os.environ["endgame"]
-DB_HOST = os.environ["db"]
+DB_USER = os.environ["DB_USER"]
+DB_PASSWORD = os.environ["DB_PASS"]
+DB = os.environ["DB"]
+DB_HOST = os.environ["DB_HOST"]
 
 app = Flask(__name__)
 
