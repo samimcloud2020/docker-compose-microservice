@@ -1,0 +1,5 @@
+root@ip-172-31-83-24:~# docker plugin install rexray/ebs:latest  EBS_ACCESSKEY= EBS_SECRETKEY=
+
+root@ip-172-31-83-24:~# docker volume create --driver rexray/ebs --name ebsvol1
+ebsvol1
+
