@@ -2,6 +2,10 @@ from flask import Flask,request,render_template,redirect
 import psycopg2
 import os
 import time
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 DB_USER = os.environ["DB_USER"]
 DB_PASSWORD = os.environ["DB_PASS"]
