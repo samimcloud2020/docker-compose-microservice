@@ -2,6 +2,7 @@ version: '3.1'
 
 services:
   db:
+    container_name: db
     image: postgres
     restart: always
     environment:
@@ -10,12 +11,16 @@ services:
       POSTGRES_DB: endgame
     volumes:
       - dbvolume:/var/lib/postgresql/data
+    networks:
+      - 'net1'
     
   adminer:
     image: adminer
     restart: always
     ports:
       - 9090:8080
+    networks:
+      - 'net1'
 
   backend:
     container_name: backend
@@ -28,8 +33,10 @@ services:
       DB_PASS: example
       DB: endgame
       DB_HOST: db
-    links:
-      - db
+    depends_on:
+      - 'db'
+    networks:
+      - 'net1'
 
   frontend:
     container_name: frontend
@@ -39,8 +46,10 @@ services:
       dockerfile: ./endgamefrontend/Dockerfile
     ports:
       - 80:5000
-    links:
-      - backend
+    depends_on:
+      - 'db'
+    networks:
+      - 'net1'
 
 volumes:
   dbvolume:
