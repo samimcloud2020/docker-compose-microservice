@@ -1,0 +1,9 @@
+docker plugin install rexray/s3fs:latest S3FS_REGION=us-east-1 S3FS_OPTIONS="allow_other,iam_role=auto,umask=000" --grant-all-permissions S3FS_ACCESSKEY=AKIAUHTRPTRZ66B2I7G2 S3FS_SECRETKEY=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
+latest: Pulling from rexray/s3fs
+Digest: sha256:8f1ededd08deb86093ece2c80defa263c9aeb3eadfead6b17fe7bd767e417df9
+
+
+docker plugin ls
+
+
+docker run -it --volume-driver=rexray/s3fs -v ${aws-bucket-name}:/data ubuntu 
