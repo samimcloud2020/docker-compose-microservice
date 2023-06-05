@@ -1,7 +1,7 @@
 from flask import Flask,request,render_template,redirect
 import requests
 import os
-
+import psycopg2
 class Review(object):
     def __init__(self,name,review):
         self.name = name
