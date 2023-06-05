@@ -6,6 +6,8 @@ COPY . /app
 
 RUN pip3 install -r requirements.txt
 RUN apt-get install build-dep python-psycopg2
+RUN pip3 install psycopg2-binary 
+
 
 
 EXPOSE 5000
