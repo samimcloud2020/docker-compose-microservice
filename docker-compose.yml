@@ -58,3 +58,7 @@ services:
 volumes:
   dbvolume:
     driver: local
+    
+networks:
+  net1:
+    driver: bridge
