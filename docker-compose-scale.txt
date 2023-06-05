@@ -1,0 +1,32 @@
+root@ip-172-31-83-24:~/docker-compose-microservice# docker-compose scale db=2
+WARNING: The scale command is deprecated. Use the up command with the --scale flag instead.
+Creating docker-compose-microservice_db_2 ... done
+
+
+root@ip-172-31-83-24:~/docker-compose-microservice# docker-compose ps
+                 Name                               Command                State                      Ports                  
+-----------------------------------------------------------------------------------------------------------------------------
+docker-compose-microservice_adminer_1    entrypoint.sh php -S [::]: ...   Up         0.0.0.0:9090->8080/tcp,:::9090->8080/tcp
+docker-compose-microservice_backend_1    python3 app.py                   Up         5000/tcp                                
+docker-compose-microservice_db_1         docker-entrypoint.sh postgres    Up         5432/tcp                                
+docker-compose-microservice_db_2         docker-entrypoint.sh postgres    Up         5432/tcp                                
+docker-compose-microservice_frontend_1   python3 app.py                   Up         0.0.0.0:80->5000/tcp,:::80->5000/tcp    
+
+
+root@ip-172-31-83-24:~/docker-compose-microservice# docker-compose scale backend=3
+WARNING: The scale command is deprecated. Use the up command with the --scale flag instead.
+Creating docker-compose-microservice_backend_2 ... done
+Creating docker-compose-microservice_backend_3 ... done
+
+(MIND IT, IF A SVC OF CONTAINER EXPOSED PORT THEN IT CAN NOT SCALE, BUT SVC WITH NOT EXPOSED PORT ONLY SCALE)
+----------------------------------------------------------------------------------------------------------
+OTHERWISE CONFLICT.
+
+root@ip-172-31-83-24:~/docker-compose-microservice# docker-compose scale frontend=2 ----> AS FRONTEND SVC IS EXPOSED, CAN NOT SCALE
+WARNING: The scale command is deprecated. Use the up command with the --scale flag instead.
+WARNING: The "frontend" service specifies a port on the host. If multiple containers for this service are created on a single host, the port will clash.
+Creating docker-compose-microservice_frontend_2 ... 
+Creating docker-compose-microservice_frontend_2 ... error
+
+ERROR: for docker-compose-microservice_frontend_2  Cannot start service frontend: driver failed programming external connectivity on endpoint docker-compose-microservice_frontend_2 (e8fec1694afb54d83d78a3d042c8f9b9fdbf72f5abf35b95fc740f985db1dec1): Bind for 0.0.0.0:80 failed: port is already allocated
+ERROR: Cannot start service frontend: driver failed programming external connectivity on endpoint docker-compose-microservice_frontend_2 (e8fec1694afb54d83d78a3d042c8f9b9fdbf72f5abf35b95fc740f985db1dec1): Bind for 0.0.0.0:80 failed: port is already allocated
