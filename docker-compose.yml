@@ -9,6 +9,7 @@ services:
       POSTGRES_USER: john
       POSTGRES_PASSWORD: example
       POSTGRES_DB: endgame
+      PGDATA: /var/lib/postgresql/data/sam/
     volumes:
       - 'dbvolume:/var/lib/postgresql/data'
     networks:
