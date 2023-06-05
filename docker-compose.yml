@@ -25,7 +25,7 @@ services:
 
   backend:
     container_name: backend
-    image: endgamebackend:v1
+    #image: endgamebackend:v1
     build: ./endgamebackend/
     env_file:
       - '.env'
@@ -33,21 +33,20 @@ services:
       - 'db'
     networks:
       - 'net1'
-    volumes:
-      - 'dbvolume:/app'
+  
 
   frontend:
     container_name: frontend
-    image: endgamefrontend:v1
+    #image: endgamefrontend:v1
     build: ./endgamefrontend/
     ports:
       - 80:5000
     depends_on:
       - 'db'
+      - 'backend'
     networks:
       - 'net1'
-    volumes:
-      - 'dbvolume:/app'
+    
 
 volumes:
   dbvolume:
