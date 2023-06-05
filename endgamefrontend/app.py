@@ -1,5 +1,5 @@
 from flask import Flask,request,render_template,redirect
-import requests, psycopg2
+import requests
 import os
 class Review(object):
     def __init__(self,name,review):
