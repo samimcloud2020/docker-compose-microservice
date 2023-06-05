@@ -1,0 +1,1 @@
+frontend(python, exposed port 80)----->backend(python, not exposed)------->db(postgresql,not exposed)<------------adminer(db tool to access the datacase by u,p,db name,host)
