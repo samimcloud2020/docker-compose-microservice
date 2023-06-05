@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: example
       POSTGRES_DB: endgame
     volumes:
-      - dbvolume:/var/lib/postgresql/data
+      - 'dbvolume:/var/lib/postgresql/data'
     networks:
       - 'net1'
     
@@ -37,6 +37,8 @@ services:
       - 'db'
     networks:
       - 'net1'
+    volumes:
+      - 'dbvolume:/app'
 
   frontend:
     container_name: frontend
@@ -50,6 +52,8 @@ services:
       - 'db'
     networks:
       - 'net1'
+    volumes:
+      - 'dbvolume:/app'
 
 volumes:
   dbvolume:
