@@ -7,7 +7,8 @@ docker-compose:-------------------->
 Docker-compose tool was created first and its purpose is "for defining and running multi-container Docker applications" on a single docker engine.
 
 docker stack:--------------------------->
-Where Docker Stack is used in Docker Swarm (Docker's orchestration and scheduling tool) and, therefore, it has additional configuration parameters (i.e. replicas, deploy, roles) that are not needed on a single docker engine.
+Where Docker Stack is used in Docker Swarm (Docker's orchestration and scheduling tool) and, therefore, it has additional configuration parameters
+(i.e. replicas, deploy, roles) that are not needed on a single docker engine.
 
 The stack file is interpreted by docker stack command. This command can be invoked from a docker swarm manager only.
 
