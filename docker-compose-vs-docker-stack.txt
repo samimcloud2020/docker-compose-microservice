@@ -1,0 +1,28 @@
+What is the difference between docker Compose and docker stack?
+You can't build new images using the stack commands. It need pre-built images to exist. So docker-compose is better suited for development scenarios.
+
+
+
+docker-compose:-------------------->
+Docker-compose tool was created first and its purpose is "for defining and running multi-container Docker applications" on a single docker engine.
+
+docker stack:--------------------------->
+Where Docker Stack is used in Docker Swarm (Docker's orchestration and scheduling tool) and, therefore, it has additional configuration parameters (i.e. replicas, deploy, roles) that are not needed on a single docker engine.
+
+The stack file is interpreted by docker stack command. This command can be invoked from a docker swarm manager only.
+
+ $ docker stack deploy --compose-file docker-stack.yml mystack
+
+
+big diff:------>
+Docker stack is ignoring “build” instructions. 
+You can’t build new images using the stack commands. It need pre-built images to exist.
+So docker-compose is better suited for development scenarios.
+
+
+Docker Compose is an official tool that helps you manage your Docker containers by letting you define everything through a docker-compose.yml file.
+
+docker stack is a command that’s embedded into the Docker CLI. It lets you manage a cluster of Docker containers through Docker Swarm.
+
+
+For example, the deploy property is ignored by Docker Compose and depends_on is ignored by docker stack. There are other differences too.
